@@ -15,44 +15,36 @@
   </head>
 
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #390b48">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <div class="container">
+      <nav class="navbar fixed-top navbar-expand-md navbar-custom">
+        <div class="d-flex flex-grow-1">
+            <a class="navbar-brand d-flex w-50 mr-auto" href="#home">whoisyuriy</a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#background">Background</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#portfolio">Featured work</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
     <div id="particles-js"></div>
-    <div class="header centered-text">
+    <div class="header centered-text" id="home">
       <h1 class="header-name">WHO IS YURIY</h1>
       <br>
       <br>
@@ -62,7 +54,7 @@
       <br>
       <br>
       <a href="https://github.com/jurayev">
-        <button>
+        <button class="animated">
           View GitHub
           <span></span>
           <span></span>
@@ -70,8 +62,8 @@
           <span></span>
         </button>
       </a>
-      <a href="/docs/YuriyJurayev.pdf">
-        <button>
+      <a href="/files/YuriyJurayev.pdf">
+        <button class="animated">
           Download Resume
           <span></span>
           <span></span>
@@ -80,7 +72,7 @@
         </button>
       </a>
       <a href="https://www.linkedin.com/in/yuriy-jurayev">
-        <button>
+        <button class="animated">
           View LinkedIn
           <span></span>
           <span></span>
@@ -93,7 +85,7 @@
       <div class="flex-item-image">
         <img src="images/profile_black_white.png">
       </div>
-      <div class="flex-item-txtblock">
+      <div class="flex-item-txtblock" id="about">
         <h2 class="margin-top"> ABOUT </h2>
 
         <p>
@@ -113,7 +105,7 @@
 
     </div>
     <div class="dividerLine"></div>
-    <div id="content" class="container centered-text">
+    <div class="container centered-text" id="background">
       <h2> BACKGROUND </h2>
       <p>
         Currently working at
@@ -134,7 +126,7 @@
       </p>
     </div>
     <div class="dividerLine"></div>
-    <div id="content" class="container centered-text">
+    <div class="container centered-text" id="portfolio">
       <h2>FEATURED WORK</h2>
       <p>
         <a href="https://github.com/jurayev/fr-ryanair-test-cucumber-bdd">[Ryanair Test Automation Framework]</a> - Concise UI tests for booking up a flight feature: Java, JUnit4, Cucumber, BDD
@@ -150,7 +142,7 @@
       </p>
     </div>
     <div class="dividerLine"></div>
-    <div class="container centered-text">
+    <div class="container centered-text" id="contact">
       <h2>GET IN TOUCH</h2>
       <p>
         Interested to learn more about my work? I'm open to discuss ideas and professional opportunities.
