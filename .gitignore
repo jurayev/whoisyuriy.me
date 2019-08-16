@@ -18,6 +18,7 @@
 .tmproj
 nbproject
 Thumbs.db
+.idea/
 docs/app.css.map
 docs/app.js.map
 docs/vendor.js.map
