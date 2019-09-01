@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
 @import url('https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css');
 
-// custom styles
+// Custom styles
 
 $dark-purple-color: #390b48;
 $text-purple-color: #710794;
@@ -22,11 +22,6 @@ section {
   box-shadow: 0 0.25rem 0.50rem $dark-purple-color;
 }
 
-//to be removed
-.text-breeze {
-  color: #1abc9c;
-}
-
 .text-purple {
   color: $text-purple-color;
 }
@@ -35,13 +30,7 @@ section {
   border-color: $black;
 }
 
-// dividers
-.dividerLine {
-    border-top: 1px #580a90 solid;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
+// Dividers
 
 hr {
   border-color: $text-purple-color;
@@ -57,7 +46,8 @@ hr.dark {
   border-color: $black;
 }
 
-// links
+// Links
+
 a.text-link{
   color: $yellow;
   font-family: 'Marck Script', cursive;
@@ -89,7 +79,8 @@ a.text-link{
 }
 
 
-// forms
+// Forms
+
 .form-control-custom {
   box-shadow: inset 0 0.0625rem 0.0625rem rgba($text-purple-color,0.075);
 
@@ -99,7 +90,8 @@ a.text-link{
   }
 }
 
-//tables
+// Tables
+
 .table-hover {
   tbody tr {
     @include hover {
@@ -110,6 +102,7 @@ a.text-link{
 }
 
 // Img Gray Scale effect
+
 img.grayed {
   filter: grayscale(100%);
   transition: .3s ease-in-out;

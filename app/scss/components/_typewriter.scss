@@ -1,4 +1,4 @@
-/* animated typewriter*/
+// Animated typewriter
 
 $blink-caret-color: $yellow;
 
@@ -21,7 +21,8 @@ $blink-caret-color: $yellow;
   animation: blink-caret 1s infinite ease;
 }
 
-/* The typewriter cursor effect */
+// The typewriter cursor effect
+
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: $blink-caret-color }

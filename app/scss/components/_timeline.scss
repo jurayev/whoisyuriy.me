@@ -28,7 +28,6 @@ $brand-gray: #f2f3f7;
   @media (min-width: 600px) {
     padding: 0 2.5rem;
   }
-
 }
 
 .background {
@@ -43,7 +42,8 @@ $brand-gray: #f2f3f7;
   position: relative;
   margin-bottom: 30px;
 }
-.timeline-centered:before, .timeline-centered:after {
+.timeline-centered:before,
+.timeline-centered:after {
   content: " ";
   display: table;
 }
@@ -161,10 +161,4 @@ $brand-gray: #f2f3f7;
     padding-inline-start: 20px;
   }
 
-}
-
-.animate-box {
-  .js & {
-    opacity: 0;
-  }
 }

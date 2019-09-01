@@ -30,7 +30,7 @@
     sr.reveal('.anim-card-left-js', { origin: 'left', distance: '15vw', duration: 800, viewFactor: 0.7 });
     sr.reveal('.anim-card-bottom-js', { origin: 'bottom', distance: '15vw', duration: 800, delay: 800, viewFactor: 0.7 });
 
-    sr.reveal('.anim-article-right-js', { origin: 'right', distance: '7vw', duration: 800, delay: 500, viewFactor: 0.1 });
+    sr.reveal('.anim-article-right-js', { origin: 'right', distance: '6vw', duration: 800, delay: 500, viewFactor: 0.1 });
     sr.reveal('.anim-article-left-js', { origin: 'left', distance: '15vw', duration: 800, delay: 500, viewFactor: 0.1 });
 
 })(jQuery);
