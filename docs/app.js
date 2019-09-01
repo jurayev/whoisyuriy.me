@@ -153,23 +153,58 @@ require.register("index.js", function(exports, require, module) {
 
 require('bootstrap');
 
-require('js/main');
+require('jquery');
 
-require('js/app');
+require('jquery.easing');
 
-// adds all custom Bootstrap jQuery plugins
-// see all plugins here: http://getbootstrap.com/javascript/
+require('js/typewriter');
 
-document.addEventListener('DOMContentLoaded', function () {
-  // do your setup here
-  console.log('Initialized app');
-  if ($('btn')) {
-    console.log('jQuery works');
-  }
-}); //globals: $, jQuery and Tether, see config
+require('js/particles');
+
+require('js/scrolling');
+
+require('js/animation');
+
+require('js/preloader');
 });
 
-require.register("js/app.js", function(exports, require, module) {
+;require.register("js/animation.js", function(exports, require, module) {
+'use strict';
+
+(function ($) {
+
+    // Star icons magic
+    $('td[data-score]').html(function () {
+        var score = Number($(this).attr('data-score'));
+        var maxScore = Number($(this).attr('data-max-score'));
+        var fullStars = Math.floor(score);
+        var halfStar = score !== fullStars;
+        var emptyStars = maxScore - Math.ceil(score);
+
+        return new Array(fullStars + 1).join('<i class="fas fa-star anim-stars-js"></i>') + (halfStar ? '<i class="fas fa-star-half-alt anim-stars-js"></i>' : '') + new Array(emptyStars + 1).join('<i class="far fa-star anim-stars-js"></i>');
+    });
+
+    // ScrollReveal animations
+
+    sr.reveal('.anim-main-page', { distance: 0, duration: 1500, delay: 2000, scale: 0.9 });
+
+    sr.reveal('.anim-main-content-js', { distance: '50vh', duration: 1000, viewFactor: 0.5 });
+    sr.reveal('.anim-initial-content-js', { origin: 'top', distance: '10vw', duration: 700, scale: 0.9, viewFactor: 0.3 });
+
+    sr.reveal('.anim-stars-js', { origin: 'top', distance: '5vw', duration: 700, delay: 1500, scale: 0.9 }, 70);
+    sr.reveal('.anim-link-icons-js', { distance: 0, duration: 1000, scale: 2 }, 500);
+
+    sr.reveal('.anim-card-top-js', { origin: 'top', distance: '15vw', duration: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-right-js', { origin: 'right', distance: '8vw', duration: 800, delay: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-left-js', { origin: 'left', distance: '15vw', duration: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-bottom-js', { origin: 'bottom', distance: '15vw', duration: 800, delay: 800, viewFactor: 0.7 });
+
+    sr.reveal('.anim-article-right-js', { origin: 'right', distance: '7vw', duration: 800, delay: 500, viewFactor: 0.1 });
+    sr.reveal('.anim-article-left-js', { origin: 'left', distance: '15vw', duration: 800, delay: 500, viewFactor: 0.1 });
+})(jQuery);
+});
+
+require.register("js/particles.js", function(exports, require, module) {
 "use strict";
 
 /* ---- particles.js config ---- */
@@ -280,35 +315,152 @@ particlesJS("particles-js", {
 });
 });
 
-require.register("js/main.js", function(exports, require, module) {
+require.register("js/preloader.js", function(exports, require, module) {
 'use strict';
 
+var circleOne = anime({
+    targets: ['.circle-1'],
+    translateY: -22,
+    translateX: 44,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleTwo = anime({
+    targets: ['.circle-2'],
+    translateY: 22,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleThree = anime({
+    targets: ['.circle-3'],
+    translateY: -22,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleFour = anime({
+    targets: ['.circle-4'],
+    translateY: 22,
+    translateX: -44,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+(function ($) {
+
+    // activates preloader
+    $(window).on('load', function () {
+
+        $('body').scrollspy('refresh');
+
+        // disable scrolling while preloader is active
+        disable_scroll();
+
+        setTimeout(function () {
+            //enable scrolling back
+            enable_scroll();
+            $('#preloader').fadeOut('fast', function () {});
+            $('#overlay').fadeOut('slow', function () {});
+        }, 2000);
+
+        function disable_scroll() {
+            document.body.style.overflow = "hidden";
+        }
+
+        function enable_scroll() {
+            document.body.style.overflow = "initial";
+        }
+    });
+})(jQuery);
+});
+
+require.register("js/scrolling.js", function(exports, require, module) {
+'use strict';
+
+(function ($) {
+    "use strict"; // Start of use strict
+
+    // Smooth scrolling using jQuery easing
+
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 56
+                }, 1000, "easeInOutExpo");
+                return false;
+            }
+        }
+    });
+
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('.js-scroll-trigger').click(function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Activate scrollspy to add active class to navbar items on scroll
+    $('body').scrollspy({
+        target: '#mainNav',
+        offset: 66
+    });
+
+    $(window).on('load', function () {
+        $('body').scrollspy('refresh');
+    });
+
+    // navbar reveal
+    $(document).ready(function () {
+
+        // hide .navbar first
+        $(".navbar").hide();
+
+        // fade in .navbar
+        $(function () {
+            $(window).scroll(function () {
+
+                // set distance user needs to scroll before we start fadeIn
+                if ($(this).scrollTop() > 10) {
+                    $('.navbar').fadeIn();
+                } else {
+                    $('.navbar').fadeOut();
+                }
+            });
+        });
+    });
+})(jQuery); // End of use strict
+});
+
+;require.register("js/typewriter.js", function(exports, require, module) {
+"use strict";
+
 $(document).ready(function () {
+	var occupationID = "occupation";
+	var occupationText = ["Software Developer In Test?", "Test Automation Engineer?"];
+	typewrite(occupationID, occupationText);
 
-	$('a[href*=#]').click(function () {
-		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-
-			var $target = $(this.hash);
-			$target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
-
-			if ($target.length) {
-				var targetOffset = $target.offset().top;
-				$('html,body').animate({ scrollTop: targetOffset }, 1000);
-				return false;
-			}
-		}
-	});
-
-	var elemID = "hello";
-	var texts = ["YURIY JURAYEV", "TEST AUTOMATION ENGINEER", "SOFTWARE DEVELOPER IN TEST"];
-	typewrite(elemID, texts);
-
-	// Animated skill bars
-	jQuery('.skillbar').each(function () {
-		jQuery(this).find('.skillbar-bar').animate({
-			width: jQuery(this).attr('data-percent')
-		}, 6000);
-	});
+	var introID = "intro";
+	var introText = ["Looking for an experienced"];
+	typewrite(introID, introText);
 });
 
 function typewrite(elemID, texts) {
@@ -316,18 +468,32 @@ function typewrite(elemID, texts) {
 	var i = 0;
 	var interval = null;
 	var size = texts.length - 1;
+	var timeout = void 0;
+	var typeTimeout = 100;
 
 	function update(func) {
+		if (elemID === "occupation" && $("#occupation").hasClass("hidden")) {
+			timeout = 6000;
+		} else if (elemID === "intro") {
+			timeout = 3500;
+		} else {
+			timeout = 1000;
+		}
+		// TODO: needs to be refactored
+		// set smart waiter condition -> once reveal animation is done
+		// this should be triggered
 		elemRef.classList.toggle('animateCursor');
 		setTimeout(function () {
 			elemRef.classList.toggle('animateCursor');
-			interval = setInterval(func, 100);
-		}, 2000);
+			interval = setInterval(func, typeTimeout);
+		}, timeout);
 	}
 
 	function clear() {
 		var count = elemRef.innerHTML.length;
 		if (count === 0) {
+			// type interval between chars
+			typeTimeout = 100;
 			clearInterval(interval);
 			elemRef.innerHTML = '';
 			i = i >= size ? 0 : i + 1;
@@ -341,10 +507,18 @@ function typewrite(elemID, texts) {
 		var count = elemRef.innerHTML.length;
 		var countCharacter = texts[i].length - 1;
 		elemRef.innerHTML += texts[i][count > 0 ? count : 0];
-
+		if (elemID === "occupation" && $("#occupation").hasClass("hidden")) {
+			$("#occupation").removeClass("hidden");
+		}
 		if (countCharacter === count) {
+			// clear interval between chars
+			typeTimeout = 40;
 			clearInterval(interval);
-			update(clear);
+			if (elemID === "intro") {
+				$(".intro").addClass("hidden");
+			} else {
+				update(clear);
+			}
 		}
 	}
 
@@ -352,138 +526,7 @@ function typewrite(elemID, texts) {
 }
 });
 
-;require.register("js/particles.min.js", function(exports, require, module) {
-"use strict";
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/*!
- * A lightweight, dependency-free and responsive javascript plugin for particle backgrounds.
- *
- * @author Marc Bruederlin <hello@marcbruederlin.com>
- * @version 2.2.3
- * @license MIT
- * @see https://github.com/marcbruederlin/particles.js
- */
-var Particles = function (e, t) {
-  "use strict";
-  var n,
-      i = {};function o(e, t) {
-    return e.x < t.x ? -1 : e.x > t.x ? 1 : e.y < t.y ? -1 : e.y > t.y ? 1 : 0;
-  }return (n = function () {
-    return function () {
-      var e = this;e.defaults = { responsive: null, selector: null, maxParticles: 100, sizeVariations: 3, showParticles: !0, speed: .5, color: "#000000", minDistance: 120, connectParticles: !1 }, e.element = null, e.context = null, e.ratio = null, e.breakpoints = [], e.activeBreakpoint = null, e.breakpointSettings = [], e.originalSettings = null, e.storage = [], e.usingPolyfill = !1;
-    };
-  }()).prototype.init = function (e) {
-    var t = this;return t.options = t._extend(t.defaults, e), t.originalSettings = JSON.parse(JSON.stringify(t.options)), t._animate = t._animate.bind(t), t._initializeCanvas(), t._initializeEvents(), t._registerBreakpoints(), t._checkResponsive(), t._initializeStorage(), t._animate(), t;
-  }, n.prototype.destroy = function () {
-    var t = this;t.storage = [], t.element.remove(), e.removeEventListener("resize", t.listener, !1), e.clearTimeout(t._animation), cancelAnimationFrame(t._animation);
-  }, n.prototype._initializeCanvas = function () {
-    var n,
-        i,
-        o = this;if (!o.options.selector) return console.warn("particles.js: No selector specified! Check https://github.com/marcbruederlin/particles.js#options"), !1;o.element = t.querySelector(o.options.selector), o.context = o.element.getContext("2d"), n = e.devicePixelRatio || 1, i = o.context.webkitBackingStorePixelRatio || o.context.mozBackingStorePixelRatio || o.context.msBackingStorePixelRatio || o.context.oBackingStorePixelRatio || o.context.backingStorePixelRatio || 1, o.ratio = n / i, o.element.width = o.element.offsetParent ? o.element.offsetParent.clientWidth * o.ratio : o.element.clientWidth * o.ratio, o.element.offsetParent && "BODY" === o.element.offsetParent.nodeName ? o.element.height = e.innerHeight * o.ratio : o.element.height = o.element.offsetParent ? o.element.offsetParent.clientHeight * o.ratio : o.element.clientHeight * o.ratio, o.element.style.width = "100%", o.element.style.height = "100%", o.context.scale(o.ratio, o.ratio);
-  }, n.prototype._initializeEvents = function () {
-    var t = this;t.listener = function () {
-      t._resize();
-    }.bind(this), e.addEventListener("resize", t.listener, !1);
-  }, n.prototype._initializeStorage = function () {
-    var e = this;e.storage = [];for (var t = e.options.maxParticles; t--;) {
-      e.storage.push(new i(e.context, e.options));
-    }
-  }, n.prototype._registerBreakpoints = function () {
-    var e,
-        t,
-        n,
-        i = this,
-        o = i.options.responsive || null;if ("object" == (typeof o === "undefined" ? "undefined" : _typeof(o)) && null !== o && o.length) {
-      for (e in o) {
-        if (n = i.breakpoints.length - 1, t = o[e].breakpoint, o.hasOwnProperty(e)) {
-          for (; n >= 0;) {
-            i.breakpoints[n] && i.breakpoints[n] === t && i.breakpoints.splice(n, 1), n--;
-          }i.breakpoints.push(t), i.breakpointSettings[t] = o[e].options;
-        }
-      }i.breakpoints.sort(function (e, t) {
-        return t - e;
-      });
-    }
-  }, n.prototype._checkResponsive = function () {
-    var t,
-        n = this,
-        i = !1,
-        o = e.innerWidth;if (n.options.responsive && n.options.responsive.length && null !== n.options.responsive) {
-      for (t in i = null, n.breakpoints) {
-        n.breakpoints.hasOwnProperty(t) && o <= n.breakpoints[t] && (i = n.breakpoints[t]);
-      }null !== i ? (n.activeBreakpoint = i, n.options = n._extend(n.options, n.breakpointSettings[i])) : null !== n.activeBreakpoint && (n.activeBreakpoint = null, i = null, n.options = n._extend(n.options, n.originalSettings));
-    }
-  }, n.prototype._refresh = function () {
-    this._initializeStorage(), this._draw();
-  }, n.prototype._resize = function () {
-    var t = this;t.element.width = t.element.offsetParent ? t.element.offsetParent.clientWidth * t.ratio : t.element.clientWidth * t.ratio, t.element.offsetParent && "BODY" === t.element.offsetParent.nodeName ? t.element.height = e.innerHeight * t.ratio : t.element.height = t.element.offsetParent ? t.element.offsetParent.clientHeight * t.ratio : t.element.clientHeight * t.ratio, t.context.scale(t.ratio, t.ratio), clearTimeout(t.windowDelay), t.windowDelay = e.setTimeout(function () {
-      t._checkResponsive(), t._refresh();
-    }, 50);
-  }, n.prototype._animate = function () {
-    var t = this;t._draw(), t._animation = e.requestAnimFrame(t._animate);
-  }, n.prototype.resumeAnimation = function () {
-    this._animation || this._animate();
-  }, n.prototype.pauseAnimation = function () {
-    var t = this;if (t._animation) {
-      if (t.usingPolyfill) e.clearTimeout(t._animation);else (e.cancelAnimationFrame || e.webkitCancelAnimationFrame || e.mozCancelAnimationFrame)(t._animation);t._animation = null;
-    }
-  }, n.prototype._draw = function () {
-    var t = this,
-        n = t.element,
-        i = n.offsetParent ? n.offsetParent.clientWidth : n.clientWidth,
-        r = n.offsetParent ? n.offsetParent.clientHeight : n.clientHeight,
-        a = t.options.showParticles,
-        s = t.storage;n.offsetParent && "BODY" === n.offsetParent.nodeName && (r = e.innerHeight), t.context.clearRect(0, 0, n.width, n.height), t.context.beginPath();for (var l = s.length; l--;) {
-      var c = s[l];a && c._draw(), c._updateCoordinates(i, r);
-    }t.options.connectParticles && (s.sort(o), t._updateEdges());
-  }, n.prototype._updateEdges = function () {
-    for (var e = this, t = e.options.minDistance, n = Math.sqrt, i = Math.abs, o = e.storage, r = o.length, a = 0; a < r; a++) {
-      for (var s = o[a], l = a + 1; l < r; l++) {
-        var c,
-            f = o[l],
-            p = s.x - f.x,
-            h = s.y - f.y;if (c = n(p * p + h * h), i(p) > t) break;c <= t && e._drawEdge(s, f, 1.2 - c / t);
-      }
-    }
-  }, n.prototype._drawEdge = function (e, t, n) {
-    var i = this,
-        o = i.context.createLinearGradient(e.x, e.y, t.x, t.y),
-        r = this._hex2rgb(e.color),
-        a = this._hex2rgb(t.color);o.addColorStop(0, "rgba(" + r.r + "," + r.g + "," + r.b + "," + n + ")"), o.addColorStop(1, "rgba(" + a.r + "," + a.g + "," + a.b + "," + n + ")"), i.context.beginPath(), i.context.strokeStyle = o, i.context.moveTo(e.x, e.y), i.context.lineTo(t.x, t.y), i.context.stroke(), i.context.fill(), i.context.closePath();
-  }, n.prototype._extend = function (e, t) {
-    return Object.keys(t).forEach(function (n) {
-      e[n] = t[n];
-    }), e;
-  }, n.prototype._hex2rgb = function (e) {
-    var t = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);return t ? { r: parseInt(t[1], 16), g: parseInt(t[2], 16), b: parseInt(t[3], 16) } : null;
-  }, (i = function i(n, _i) {
-    var o = this,
-        r = Math.random,
-        a = _i.speed,
-        s = _i.color instanceof Array ? _i.color[Math.floor(Math.random() * _i.color.length)] : _i.color;o.context = n, o.options = _i;var l = t.querySelector(_i.selector);o.x = l.offsetParent ? r() * l.offsetParent.clientWidth : r() * l.clientWidth, l.offsetParent && "BODY" === l.offsetParent.nodeName ? o.y = r() * e.innerHeight : o.y = l.offsetParent ? r() * l.offsetParent.clientHeight : r() * l.clientHeight, o.vx = r() * a * 2 - a, o.vy = r() * a * 2 - a, o.radius = r() * r() * _i.sizeVariations, o.color = s, o._draw();
-  }).prototype._draw = function () {
-    var e = this;e.context.save(), e.context.translate(e.x, e.y), e.context.moveTo(0, 0), e.context.beginPath(), e.context.arc(0, 0, e.radius, 0, 2 * Math.PI, !1), e.context.fillStyle = e.color, e.context.fill(), e.context.restore();
-  }, i.prototype._updateCoordinates = function (e, t) {
-    var n = this,
-        i = n.x + this.vx,
-        o = n.y + this.vy,
-        r = n.radius;i + r > e ? i = r : i - r < 0 && (i = e - r), o + r > t ? o = r : o - r < 0 && (o = t - r), n.x = i, n.y = o;
-  }, e.requestAnimFrame = function () {
-    var t = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame;return t || (this._usingPolyfill = !0, function (t) {
-      return e.setTimeout(t, 1e3 / 60);
-    });
-  }(), new n();
-}(window, document);!function () {
-  "use strict";
-  "function" == typeof define && define.amd ? define("Particles", function () {
-    return Particles;
-  }) : "undefined" != typeof module && module.exports ? module.exports = Particles : window.Particles = Particles;
-}();
-});
-
-require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+;require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
   
 
 // Auto-loaded modules from config.npm.globals.

@@ -1,0 +1,179 @@
+/* ----Animated button---- */
+
+$dark-purple-color: #390b48;
+$darker-purple-color: #2e0a3a;
+
+.wrapper{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height:auto;
+}
+
+button.animated{
+  display: inline-block;
+  /*#width: 200px;
+  #height: 70px;*/
+  background-color: $dark-purple-color;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: none;
+  border-radius: 0.3rem;
+  color: $yellow;
+  font-size: 20px;
+  /*#letter-spacing: 3px;
+  #font-family: 'Lato';
+  #font-weight: 600;*/
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  /*#padding: 0px;*/
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  border-width: 1px;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem
+}
+
+button.animated span{
+  position: absolute;
+  display: block;
+}
+
+button.animated span:nth-child(1){
+  height: 3px;
+  width:200px;
+  top:0px;
+  left:-200px;
+  background: linear-gradient(to right, rgba(0,0,0,0), #ffa500);
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  animation: span1 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes span1{
+  0%{
+    left:-200px
+  }
+  100%{
+    left:200px;
+  }
+}
+button.animated span:nth-child(2){
+  height: 70px;
+  width: 3px;
+  top: -70px;
+  right: 0px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #f6e58d);
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  animation: span2 2s linear infinite;
+  animation-delay: 2s;
+}
+@keyframes span2{
+  0%{
+    top: -70px;
+  }
+  100%{
+    top: 70px;
+  }
+}
+button.animated span:nth-child(3){
+  height: 3px;
+  width: 200px;
+  right: -200px;
+  bottom: 0px;
+  background: linear-gradient(to left, rgba(0,0,0,0), #ffa500);
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  animation: span3 2s linear infinite;
+  animation-delay: 3s;
+}
+@keyframes span3{
+  0%{
+    right: -200px;
+  }
+  100%{
+    right: 200px;
+  }
+}
+
+button.animated span:nth-child(4){
+  height: 70px;
+  width: 3px;
+  bottom: -70px;
+  left: 0px;
+  background: linear-gradient(to top, rgba(0,0,0,0), #f6e58d);
+  border-top-right-radius: 1px;
+  border-top-left-radius: 1px;
+  animation: span4 2s linear infinite;
+  animation-delay: 4s;
+}
+@keyframes span4{
+  0%{
+    bottom: -70px;
+  }
+  100%{
+    bottom: 70px;
+  }
+}
+
+button.animated:hover{
+  transition: all .5s;
+  transform: rotate(-3deg) scale(1.1);
+  box-shadow: 0px 3px 5px rgba(0,0,0,.4);
+}
+
+button.animated:hover span{
+  animation-play-state: paused;
+}
+
+// custom button
+
+.btn-purple {
+  color: #fff;
+  background-color: $dark-purple-color;
+  border-color: $dark-purple-color;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.btn-purple:hover {
+  color: $yellow;
+  background-color: $darker-purple-color;
+  border-color: $black;
+}
+
+.btn-purple:focus,
+.btn-purple.focus {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+}
+
+.btn-purple.disabled,
+.btn-purple:disabled {
+  color: $yellow;
+  background-color: $dark-purple-color;
+  border-color: $black;
+}
+
+.btn-purple:not(:disabled):not(.disabled):active,
+.btn-purple:not(:disabled):not(.disabled).active,
+.show > .btn-purple.dropdown-toggle {
+  color: $yellow;
+  background-color: $darker-purple-color;
+  border-color: $black;
+}
+
+.btn-purple:not(:disabled):not(.disabled):active:focus,
+.btn-purple:not(:disabled):not(.disabled).active:focus,
+.show > .btn-purple.dropdown-toggle:focus {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+}
+
+// navbar toggler button
+.btn-toggler:focus {
+  outline: 0;
+}

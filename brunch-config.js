@@ -1,7 +1,7 @@
 // See http://brunch.io for documentation.
 exports.paths = {
   public: './docs'
-}
+};
 
 exports.files = {
   javascripts: {

@@ -9,9 +9,6 @@
     "start": "brunch watch --server",
     "build": "brunch build --production"
   },
-  "dependencies": {
-    "particlesjs": "^2.2.3"
-  },
   "devDependencies": {
     "auto-reload-brunch": "^2",
     "babel-brunch": "~6.0",
@@ -20,6 +17,7 @@
     "brunch": "^2",
     "clean-css-brunch": "^2",
     "jquery": "^3.4.1",
+    "jquery.easing": "^1.4.1",
     "popper.js": "^1.15.0",
     "sass-brunch": "^2.10.8",
     "uglify-js-brunch": "^2"

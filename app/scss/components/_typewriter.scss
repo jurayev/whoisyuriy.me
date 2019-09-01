@@ -1,0 +1,28 @@
+/* animated typewriter*/
+
+$blink-caret-color: $yellow;
+
+.occupation::after,
+.intro::after {
+  height: 1px;
+  content: '';
+  opacity: 1;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .1em solid $blink-caret-color; /* The typewriter cursor */
+}
+
+.occupation.hidden::after,
+.intro.hidden::after {
+  display: none;
+}
+
+.occupation.animateCursor::after,
+.intro.animateCursor::after {
+  animation: blink-caret 1s infinite ease;
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: $blink-caret-color }
+}

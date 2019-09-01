@@ -1,20 +1,54 @@
-/* change the background color */
+// custom styles for navbar
+
+$navbar-hover-color: $yellow;
+$navbar-text-color: $white;
+
+
 .navbar-custom {
-    background-color: #390b48;
+    .navbar-brand.js-scroll-trigger {
+        font-family: 'Marck Script', cursive;
+        letter-spacing: 0.5px;
+        color: $navbar-text-color;
+
+        @include hover-focus {
+            color: $navbar-hover-color;
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            color: $navbar-text-color;
+
+            @include hover {
+                color: $navbar-hover-color;
+            }
+
+            &.disabled {
+                color: $navbar-dark-disabled-color;
+            }
+        }
+
+        .show > .nav-link.js-scroll-trigger,
+        .active > .nav-link.js-scroll-trigger,
+        .nav-link.js-scroll-trigger.show,
+        .nav-link.js-scroll-trigger.active {
+            color: $navbar-hover-color;
+        }
+    }
+
+    .navbar-toggler-icon {
+        background-image: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$white}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+    }
+
+    .navbar-text {
+        color: $navbar-text-color;
+        a {
+            color: $navbar-hover-color;
+
+            @include hover-focus {
+                color: $navbar-hover-color;
+            }
+        }
+    }
 }
-/* change the brand and text color */
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-    color: white;
-}
-/* change the link color */
-.navbar-custom .navbar-nav .nav-link {
-    color: white;
-}
-/* change the color of active or hovered links */
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:focus .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: #ffc107;
-}
+

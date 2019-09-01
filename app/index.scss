@@ -2,8 +2,14 @@
 @import './scss/bootstrap/config';
 
 // Import all Bootstrap_ext here
-@import './scss/bootstrap_ext/button';
+
 @import './scss/bootstrap_ext/navbar';
 
 // here go's the rest
 @import './scss/custom';
+@import './scss/components/buttons';
+@import './scss/components/particles';
+@import './scss/components/typewriter';
+@import './scss/components/portfolio';
+@import './scss/components/preloader';
+@import './scss/components/timeline';

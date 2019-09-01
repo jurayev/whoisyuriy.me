@@ -1,0 +1,65 @@
+.portfolio-item {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  max-width: none;
+  margin: 0;
+
+  @media (max-width: 991px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.portfolio-item .caption {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(33, 37, 41, 0.2);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: clip-path 0.25s ease-out, background-color 0.7s;
+  clip-path: inset(0px);
+}
+
+.portfolio-item .caption .caption-content {
+  color: #fff;
+  margin: auto 5rem 5rem;
+
+  @media (max-width: 457px) {
+    margin: auto 1rem 2rem;
+  }
+}
+
+.portfolio-item:hover .caption .caption-content {
+  color: #fff;
+
+  @media (max-width: 457px) {
+    margin: auto 3rem auto;
+  }
+}
+
+.portfolio-item .caption .caption-content h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.portfolio-item .caption .caption-content p {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.portfolio-item img {
+  transition: clip-path 0.25s ease-out;
+  clip-path: inset(-1px);
+}
+
+.portfolio-item:hover img {
+  clip-path: inset(2rem);
+}
+
+.portfolio-item:hover .caption {
+  background-color: fade-out(rgba(65, 10, 91, 0.9), 0.1);
+  clip-path: inset(2rem);
+}

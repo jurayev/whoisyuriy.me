@@ -2,16 +2,16 @@
 
 import 'bootstrap';
 
-import 'js/main'
-import 'js/app'
+import 'jquery';
+import 'jquery.easing';
+
+import 'js/typewriter';
+import 'js/particles';
+import 'js/scrolling';
+import 'js/animation';
+import 'js/preloader'
 
 // adds all custom Bootstrap jQuery plugins
 // see all plugins here: http://getbootstrap.com/javascript/
 
-document.addEventListener('DOMContentLoaded', () => {
-  // do your setup here
-  console.log('Initialized app');
-  if ($('btn')) {
-    console.log('jQuery works')
-  }
-});
+
