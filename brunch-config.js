@@ -32,4 +32,4 @@ exports.npm = {
     $: 'jquery',
     jQuery: 'jquery'
   }
-}
+};
