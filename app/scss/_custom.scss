@@ -3,15 +3,11 @@
 
 // Custom styles
 
-$dark-purple-color: #390b48;
-$text-purple-color: #710794;
 $breeze-color: #1abc9c;
 $dark-greyed-color: #23282f;
 
-.brand {
-  background-image: url('images/logo/mylogo.png');
-  background-repeat: no-repeat;
-  background-size: 80%
+section {
+  padding: 150px 0;
 }
 
 header h1,
@@ -26,32 +22,17 @@ header h3 {
   }
 }
 
-section {
-  padding: 150px 0;
-}
-
 .header_bg {
   background: url('images/main_background.jpg') fixed center no-repeat;
   background-size: cover;
 }
 
-.bg-dark-purple {
-  background-color: $dark-purple-color;
-}
-
 .bg-dark-greyed {
   background-color: $dark-greyed-color;
 }
+
 .bg-ocean {
   background-color: #1d809f;
-}
-
-.shadow-purple {
-  box-shadow: 0 0.25rem 0.50rem $dark-purple-color;
-}
-
-.text-purple {
-  color: $text-purple-color;
 }
 
 .text-breeze {
@@ -62,16 +43,11 @@ section {
   color: #48987e !important;
 }
 
-.text-dark-greyed {
-  color: $dark-greyed-color;
-}
-
 .text-black {
   color: $black;
 }
 
 .text-shadow {
-  //text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   text-shadow: 0 0 7px $black;
 }
 
@@ -103,11 +79,6 @@ a.link-text-primary {
     color: $dark-greyed-color;
     text-decoration: underline solid $breeze-color;
   }
-}
-
-.header-font {
-  font-family: 'Neucha', cursive;
-  font-weight: bolder;
 }
 
 .link-icon {
@@ -146,7 +117,7 @@ a.link-text-primary {
   }
 }
 
-// Img Gray Scale effect
+// Image gray scale effect
 
 img.grayed {
   filter: grayscale(100%);
