@@ -6,7 +6,7 @@ import 'jquery';
 import 'jquery.easing';
 
 import 'js/typewriter';
-import 'js/particles';
+//import 'js/particles';
 import 'js/scrolling';
 import 'js/animation';
 import 'js/preloader'

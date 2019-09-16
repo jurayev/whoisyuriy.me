@@ -1,7 +1,6 @@
 // Animated button
 
-$dark-purple-color: #390b48;
-$darker-purple-color: #2e0a3a;
+$breeze-color: #1abc9c;
 
 .wrapper{
   position: absolute;
@@ -14,17 +13,19 @@ $darker-purple-color: #2e0a3a;
 
 button.animated{
   display: inline-block;
-  background-color: $dark-purple-color;
+  //background-color: $breeze-color;
+  //background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
   border-color: rgba(255, 255, 255, 0.2);
   border-style: none;
   border-radius: 0.3rem;
-  color: $yellow;
+  color: $breeze-color;
   font-size: 20px;
   outline: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-width: 1px;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
   margin-left: 1rem;
@@ -42,7 +43,7 @@ button.animated span:nth-child(1){
   width:200px;
   top:0px;
   left:-200px;
-  background: linear-gradient(to right, rgba(0,0,0,0), #ffa500);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), $breeze-color);
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
   animation: span1 2s linear infinite;
@@ -62,7 +63,7 @@ button.animated span:nth-child(2){
   width: 3px;
   top: -70px;
   right: 0px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0), #f6e58d);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $white);
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
   animation: span2 2s linear infinite;
@@ -81,7 +82,7 @@ button.animated span:nth-child(3){
   width: 200px;
   right: -200px;
   bottom: 0px;
-  background: linear-gradient(to left, rgba(0,0,0,0), #ffa500);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), $breeze-color);
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
   animation: span3 2s linear infinite;
@@ -101,7 +102,7 @@ button.animated span:nth-child(4){
   width: 3px;
   bottom: -70px;
   left: 0px;
-  background: linear-gradient(to top, rgba(0,0,0,0), #f6e58d);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), $white);
   border-top-right-radius: 1px;
   border-top-left-radius: 1px;
   animation: span4 2s linear infinite;
@@ -119,7 +120,8 @@ button.animated span:nth-child(4){
 button.animated:hover{
   transition: all .5s;
   transform: rotate(-3deg) scale(1.1);
-  box-shadow: 0px 3px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 button.animated:hover span{
@@ -128,43 +130,33 @@ button.animated:hover span{
 
 // Custom button
 
-.btn-purple {
+.btn-submit {
   color: #fff;
-  background-color: $dark-purple-color;
-  border-color: $dark-purple-color;
+  background-color: $breeze-color;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.btn-purple:hover {
-  color: $yellow;
-  background-color: $darker-purple-color;
-  border-color: $black;
+.btn-submit:hover {
+  color: #23282f;
 }
 
-.btn-purple:focus,
-.btn-purple.focus {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+.btn-submit:focus,
+.btn-submit.focus {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(26, 188, 156, 0.5);
 }
 
-.btn-purple.disabled,
-.btn-purple:disabled {
-  color: $yellow;
-  background-color: $dark-purple-color;
-  border-color: $black;
+.btn-submit:not(:disabled):not(.disabled):active,
+.btn-submit:not(:disabled):not(.disabled).active,
+.show > .btn-submit.dropdown-toggle {
+  color: #23282f;
+  background-color: $breeze-color;
+  //border-color: $black;
 }
 
-.btn-purple:not(:disabled):not(.disabled):active,
-.btn-purple:not(:disabled):not(.disabled).active,
-.show > .btn-purple.dropdown-toggle {
-  color: $yellow;
-  background-color: $darker-purple-color;
-  border-color: $black;
-}
-
-.btn-purple:not(:disabled):not(.disabled):active:focus,
-.btn-purple:not(:disabled):not(.disabled).active:focus,
-.show > .btn-purple.dropdown-toggle:focus {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+.btn-submit:not(:disabled):not(.disabled):active:focus,
+.btn-submit:not(:disabled):not(.disabled).active:focus,
+.show > .btn-submit.dropdown-toggle:focus {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(26, 188, 156, 0.5);
 }
 
 // Navbar toggler button

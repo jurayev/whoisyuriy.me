@@ -5,15 +5,43 @@
 
 $dark-purple-color: #390b48;
 $text-purple-color: #710794;
+$breeze-color: #1abc9c;
+$dark-greyed-color: #23282f;
+
+.brand {
+  background-image: url('images/logo/mylogo.png');
+  background-repeat: no-repeat;
+  background-size: 80%
+}
+
+header h1,
+header h3 {
+  font-family: 'Droid Serif', serif;
+}
+
+@media (min-width: 576px) {
+  .mt-md-6,
+  .my-md-6 {
+    margin-top: 7rem !important;
+  }
+}
 
 section {
   padding: 150px 0;
+}
+
+.header_bg {
+  background: url('images/main_background.jpg') fixed center no-repeat;
+  background-size: cover;
 }
 
 .bg-dark-purple {
   background-color: $dark-purple-color;
 }
 
+.bg-dark-greyed {
+  background-color: $dark-greyed-color;
+}
 .bg-ocean {
   background-color: #1d809f;
 }
@@ -26,14 +54,31 @@ section {
   color: $text-purple-color;
 }
 
+.text-breeze {
+  color: $breeze-color !important;
+}
+
+.text-dark-breeze {
+  color: #48987e !important;
+}
+
+.text-dark-greyed {
+  color: $dark-greyed-color;
+}
+
 .text-black {
-  border-color: $black;
+  color: $black;
+}
+
+.text-shadow {
+  //text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  text-shadow: 0 0 7px $black;
 }
 
 // Dividers
 
 hr {
-  border-color: $text-purple-color;
+  border-color: $breeze-color;
   border-width: 0.15rem;
   max-width: 12rem;
 }
@@ -48,15 +93,15 @@ hr.dark {
 
 // Links
 
-a.text-link{
-  color: $yellow;
+a.link-text-primary {
+  color: $breeze-color;
   font-family: 'Marck Script', cursive;
   font-style: initial;
   position: relative;
 
   @include hover-focus {
-    color: $text-purple-color;
-    text-decoration: underline solid $yellow;
+    color: $dark-greyed-color;
+    text-decoration: underline solid $breeze-color;
   }
 }
 
@@ -65,11 +110,11 @@ a.text-link{
   font-weight: bolder;
 }
 
-.link-yellow {
-  color: $yellow;
+.link-icon {
+  color: $breeze-color;
 
   &:hover {
-    color: lighten($yellow, 15%);
+    color: lighten($breeze-color, 15%);
     text-decoration: none;
   }
 }
@@ -82,11 +127,11 @@ a.text-link{
 // Forms
 
 .form-control-custom {
-  box-shadow: inset 0 0.0625rem 0.0625rem rgba($text-purple-color,0.075);
+  //box-shadow: inset 0 0.0625rem 0.0625rem rgba($breeze-color,0.075);
 
   &:focus {
-    border-color: lighten($dark-purple-color, 25%);
-    box-shadow: inset 0 0.0625rem 0.0625rem rgba($text-purple-color,0.075), 0 0 0 0.1875rem rgba($text-purple-color,0.25);
+    border-color: $breeze-color;
+    box-shadow: $breeze-color 0 0.0625rem 0.0625rem, 0 0 0 0.0625rem $breeze-color;
   }
 }
 
@@ -95,7 +140,7 @@ a.text-link{
 .table-hover {
   tbody tr {
     @include hover {
-      color: $yellow;
+      color: $breeze-color;
       background-color: $table-hover-bg;
     }
   }
