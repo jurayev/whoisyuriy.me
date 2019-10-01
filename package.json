@@ -21,5 +21,8 @@
     "popper.js": "^1.15.0",
     "sass-brunch": "^2.10.8",
     "uglify-js-brunch": "^2"
+  },
+  "dependencies": {
+    "progressbar.js": "^1.0.1"
   }
 }
