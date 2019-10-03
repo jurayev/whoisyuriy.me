@@ -27,8 +27,18 @@ header h3 {
 }
 
 .header_bg {
-  background: url('images/main_background.jpg') fixed center no-repeat;
+  background-image: url('images/main_background.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (max-width: 767px) {
+  .header_bg {
+    //known bug for iOS
+    background-attachment: initial;
+  }
 }
 
 .bg-dark-greyed {
