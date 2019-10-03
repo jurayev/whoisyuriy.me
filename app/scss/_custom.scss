@@ -15,6 +15,10 @@ header h3 {
   font-family: 'Droid Serif', serif;
 }
 
+.mt-6 {
+  margin-top: 6rem;
+}
+
 @media (min-width: 576px) {
   .mt-md-6,
   .my-md-6 {
@@ -41,10 +45,6 @@ header h3 {
 
 .text-dark-breeze {
   color: #48987e !important;
-}
-
-.text-black {
-  color: $black;
 }
 
 .text-shadow {
@@ -98,22 +98,10 @@ a.link-text-primary {
 // Forms
 
 .form-control-custom {
-  //box-shadow: inset 0 0.0625rem 0.0625rem rgba($breeze-color,0.075);
 
   &:focus {
     border-color: $breeze-color;
     box-shadow: $breeze-color 0 0.0625rem 0.0625rem, 0 0 0 0.0625rem $breeze-color;
-  }
-}
-
-// Tables
-
-.table-hover {
-  tbody tr {
-    @include hover {
-      color: $breeze-color;
-      background-color: $table-hover-bg;
-    }
   }
 }
 
@@ -126,4 +114,21 @@ img.grayed {
   &:hover {
     filter: grayscale(0);
   }
+}
+
+// Progress bar
+.progressbar {
+  width: 100%;
+  height: 8px;
+  position: relative;
+}
+
+.skills-wrap h3 {
+  font-size: 16px;
+  font-family: 'Droid Serif', serif;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }

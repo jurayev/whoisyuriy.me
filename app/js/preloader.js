@@ -46,6 +46,8 @@ const circleFour = anime ({
 
 (function($) {
 
+    "use strict";
+
     // activates preloader
     $(window).on('load', function () {
 

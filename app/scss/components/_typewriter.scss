@@ -2,8 +2,7 @@
 
 $blink-caret-color: #1abc9c;
 
-.occupation::after,
-.intro::after {
+.occupation::after {
   height: 1px;
   content: '';
   opacity: 1;
@@ -11,13 +10,11 @@ $blink-caret-color: #1abc9c;
   border-right: .1em solid $blink-caret-color; /* The typewriter cursor */
 }
 
-.occupation.hidden::after,
-.intro.hidden::after {
+.occupation.hidden::after {
   display: none;
 }
 
-.occupation.animateCursor::after,
-.intro.animateCursor::after {
+.occupation.animateCursor::after {
   animation: blink-caret 1s infinite ease;
 }
 

@@ -21,8 +21,8 @@
   top: 0;
   bottom: 0;
   z-index: 1;
-  transition: clip-path 0.25s ease-out, background-color 0.7s;
-  clip-path: inset(0px);
+  -webkit-transition: -webkit-clip-path 0.25s ease-out, background-color 0.7s;
+  -webkit-clip-path: inset(0px);
 }
 
 .portfolio-item .caption .caption-content {
@@ -53,15 +53,16 @@
 }
 
 .portfolio-item img {
-  transition: clip-path 0.25s ease-out;
-  clip-path: inset(-1px);
+  -webkit-transition: -webkit-clip-path 0.25s ease-out;
+  -webkit-clip-path: inset(-1px);
 }
 
 .portfolio-item:hover img {
-  clip-path: inset(2rem);
+  -webkit-clip-path: inset(2rem);
 }
 
 .portfolio-item:hover .caption {
   background-color: fade-out(rgba(26, 188, 156, 0.9), 0.1);
-  clip-path: inset(2rem);
+  -webkit-clip-path: inset(2rem);
+
 }

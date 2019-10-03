@@ -7,5 +7,6 @@ import 'jquery.easing';
 
 import 'js/typewriter';
 import 'js/scrolling';
+import 'js/preloader';
+import 'js/progress-bar';
 import 'js/animation';
-import 'js/preloader'
