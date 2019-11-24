@@ -1,1 +1,471 @@
-!function(){"use strict";var e="undefined"==typeof global?self:global;if("function"!=typeof e.require){var r={},t={},n={},i={}.hasOwnProperty,a=/^\.\.?(\/|$)/,o=function(e,r){for(var t,n=[],i=(a.test(r)?e+"/"+r:r).split("/"),o=0,s=i.length;o<s;o++)t=i[o],".."===t?n.pop():"."!==t&&""!==t&&n.push(t);return n.join("/")},s=function(e){return e.split("/").slice(0,-1).join("/")},l=function(r){return function(t){var n=o(s(r),t);return e.require(n,r)}},c=function(e,r){var n=h&&h.createHot(e),i={id:e,exports:{},hot:n};return t[e]=i,r(i.exports,l(e),i),i.exports},u=function(e){return n[e]?u(n[e]):e},f=function(e,r){return u(o(s(e),r))},d=function(e,n){null==n&&(n="/");var a=u(e);if(i.call(t,a))return t[a].exports;if(i.call(r,a))return c(a,r[a]);throw new Error("Cannot find module '"+e+"' from '"+n+"'")};d.alias=function(e,r){n[r]=e};var v=/\.[^.\/]+$/,g=/\/index(\.[^\/]+)?$/,p=function(e){if(v.test(e)){var r=e.replace(v,"");i.call(n,r)&&n[r].replace(v,"")!==r+"/index"||(n[r]=e)}if(g.test(e)){var t=e.replace(g,"");i.call(n,t)||(n[t]=e)}};d.register=d.define=function(e,n){if(e&&"object"==typeof e)for(var a in e)i.call(e,a)&&d.register(a,e[a]);else r[e]=n,delete t[e],p(e)},d.list=function(){var e=[];for(var t in r)i.call(r,t)&&e.push(t);return e};var h=e._hmr&&new e._hmr(f,d,r,t);d._cache=t,d.hmr=h&&h.wrap,d.brunch=!0,e.require=d}}(),function(){var e;"undefined"==typeof window?this:window;require.register("index.js",function(e,r,t){"use strict";r("bootstrap"),r("jquery"),r("jquery.easing"),r("js/typewriter"),r("js/scrolling"),r("js/preloader"),r("js/progress-bar"),r("js/animation")}),require.register("js/animation.js",function(e,r,t){"use strict";!function(){sr.reveal(".anim-main-page",{distance:0,duration:1500,delay:2e3,scale:.9}),sr.reveal(".anim-main-content-js",{distance:"50vh",duration:1e3,viewFactor:.5}),sr.reveal(".anim-initial-content-js",{origin:"top",distance:"10vw",duration:700,scale:.9,viewFactor:.3}),sr.reveal(".anim-link-icons-js",{distance:0,duration:1e3,scale:2},500),sr.reveal(".anim-card-top-js",{origin:"top",distance:"15vw",duration:800,viewFactor:.7}),sr.reveal(".anim-card-right-js",{origin:"right",distance:"8vw",duration:800,delay:800,viewFactor:.7}),sr.reveal(".anim-card-left-js",{origin:"left",distance:"15vw",duration:800,viewFactor:.7}),sr.reveal(".anim-card-bottom-js",{origin:"bottom",distance:"15vw",duration:800,delay:800,viewFactor:.7}),sr.reveal(".anim-article-right-js",{origin:"right",distance:"6vw",duration:800,delay:500,viewFactor:.1}),sr.reveal(".anim-article-left-js",{origin:"left",distance:"15vw",duration:800,delay:500,viewFactor:.1}),sr.reveal(".anim-progressbar-js",{origin:"left",distance:"30vw",duration:800,delay:500,viewFactor:.9})}(jQuery)}),require.register("js/preloader.js",function(e,r,t){"use strict";anime({targets:[".circle-1"],translateY:-22,translateX:44,direction:"alternate",loop:!0,elasticity:400,easing:"easeInOutElastic",duration:500,delay:100}),anime({targets:[".circle-2"],translateY:22,direction:"alternate",loop:!0,elasticity:400,easing:"easeInOutElastic",duration:500,delay:100}),anime({targets:[".circle-3"],translateY:-22,direction:"alternate",loop:!0,elasticity:400,easing:"easeInOutElastic",duration:500,delay:100}),anime({targets:[".circle-4"],translateY:22,translateX:-44,direction:"alternate",loop:!0,elasticity:400,easing:"easeInOutElastic",duration:500,delay:100});!function(e){e(window).on("load",function(){function r(){document.body.style.overflow="hidden"}function t(){document.body.style.overflow="initial"}e("body").scrollspy("refresh"),r(),setTimeout(function(){t(),e("#preloader").fadeOut("fast",function(){}),e("#overlay").fadeOut("slow",function(){})},2e3)})}(jQuery)}),require.register("js/progress-bar.js",function(e,r,t){"use strict";var n=r("progressbar.js");!function(){function e(){var e=["#ff7e09","#ec5453","#4054b2","#f9bf3f","#2fa499"],r=Math.floor(5*Math.random());return e[r]}function r(r,t){var i=new n.Line(r,{strokeWidth:4,easing:"easeInOut",duration:3e3,color:e(),trailColor:"#ffffff",trailWidth:4,svgStyle:{width:"100%",height:"100%"},text:{style:{color:"#ffffff",position:"absolute",right:"0",top:"-25px",padding:0,margin:0,transform:null},autoStyleContainer:!1},from:{color:"#FFEA82"},to:{color:"#ED6A5A"},step:function(e,r){r.setText(Math.round(100*r.value())+" %")}});i.animate(t)}function t(e){e.setAttribute("id","progressbar-"+i);var t=e.getAttribute("data-score").valueOf();r("#progressbar-"+i,t),i++}sr.reveal(".progressbar",{afterReveal:t});var i=1}(jQuery)}),require.register("js/scrolling.js",function(e,r,t){"use strict";!function(e){e('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function(){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var r=e(this.hash);if(r=r.length?r:e("[name="+this.hash.slice(1)+"]"),r.length)return e("html, body").animate({scrollTop:r.offset().top-56},1e3,"easeInOutExpo"),!1}}),e(".js-scroll-trigger").click(function(){e(".navbar-collapse").collapse("hide")}),e("body").scrollspy({target:"#mainNav",offset:66}),e(window).on("load",function(){e("body").scrollspy("refresh")}),e(document).ready(function(){e(".navbar").hide(),e(function(){e(window).scroll(function(){e(this).scrollTop()>10?e(".navbar").fadeIn():e(".navbar").fadeOut()})})})}(jQuery)}),require.register("js/typewriter.js",function(e,r,t){"use strict";!function(){function e(){var e="occupation",t=["Software Developer In Test?","Test Automation Engineer?","QA Specialist?"];r(e,t)}function r(e,r){function t(e){a.classList.toggle("animateCursor"),setTimeout(function(){a.classList.toggle("animateCursor"),s=setInterval(e,c)},1e3)}function n(){var e=a.innerHTML.length;0===e?(c=100,clearInterval(s),a.innerHTML="",o=o>=l?0:o+1,t(i)):a.innerHTML=a.innerHTML.toString().substr(0,e-1)}function i(){var e=a.innerHTML.length,i=r[o].length-1;a.innerHTML+=r[o][e>0?e:0],i===e&&(c=40,clearInterval(s),t(n))}var a=document.getElementById(e),o=0,s=null,l=r.length-1,c=100;t(i)}sr.reveal(".anim-main-page",{afterReveal:e})}(jQuery)}),require.alias("process/browser.js","process"),e=require("process"),require.register("___globals___",function(e,r,t){window.$=r("jquery"),window.jQuery=r("jquery")})}(),require("___globals___");
+(function() {
+  'use strict';
+
+  var globals = typeof global === 'undefined' ? self : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var aliases = {};
+  var has = {}.hasOwnProperty;
+
+  var expRe = /^\.\.?(\/|$)/;
+  var expand = function(root, name) {
+    var results = [], part;
+    var parts = (expRe.test(name) ? root + '/' + name : name).split('/');
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function expanded(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var hot = hmr && hmr.createHot(name);
+    var module = {id: name, exports: {}, hot: hot};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var expandAlias = function(name) {
+    return aliases[name] ? expandAlias(aliases[name]) : name;
+  };
+
+  var _resolve = function(name, dep) {
+    return expandAlias(expand(dirname(name), dep));
+  };
+
+  var require = function(name, loaderPath) {
+    if (loaderPath == null) loaderPath = '/';
+    var path = expandAlias(name);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    throw new Error("Cannot find module '" + name + "' from '" + loaderPath + "'");
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  var extRe = /\.[^.\/]+$/;
+  var indexRe = /\/index(\.[^\/]+)?$/;
+  var addExtensions = function(bundle) {
+    if (extRe.test(bundle)) {
+      var alias = bundle.replace(extRe, '');
+      if (!has.call(aliases, alias) || aliases[alias].replace(extRe, '') === alias + '/index') {
+        aliases[alias] = bundle;
+      }
+    }
+
+    if (indexRe.test(bundle)) {
+      var iAlias = bundle.replace(indexRe, '');
+      if (!has.call(aliases, iAlias)) {
+        aliases[iAlias] = bundle;
+      }
+    }
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (bundle && typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          require.register(key, bundle[key]);
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+      delete cache[bundle];
+      addExtensions(bundle);
+    }
+  };
+
+  require.list = function() {
+    var list = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        list.push(item);
+      }
+    }
+    return list;
+  };
+
+  var hmr = globals._hmr && new globals._hmr(_resolve, require, modules, cache);
+  require._cache = cache;
+  require.hmr = hmr && hmr.wrap;
+  require.brunch = true;
+  globals.require = require;
+})();
+
+(function() {
+var global = typeof window === 'undefined' ? this : window;
+var process;
+var __makeRelativeRequire = function(require, mappings, pref) {
+  var none = {};
+  var tryReq = function(name, pref) {
+    var val;
+    try {
+      val = require(pref + '/node_modules/' + name);
+      return val;
+    } catch (e) {
+      if (e.toString().indexOf('Cannot find module') === -1) {
+        throw e;
+      }
+
+      if (pref.indexOf('node_modules') !== -1) {
+        var s = pref.split('/');
+        var i = s.lastIndexOf('node_modules');
+        var newPref = s.slice(0, i).join('/');
+        return tryReq(name, newPref);
+      }
+    }
+    return none;
+  };
+  return function(name) {
+    if (name in mappings) name = mappings[name];
+    if (!name) return;
+    if (name[0] !== '.' && pref) {
+      var val = tryReq(name, pref);
+      if (val !== none) return val;
+    }
+    return require(name);
+  }
+};
+require.register("index.js", function(exports, require, module) {
+'use strict';
+
+require('bootstrap');
+
+require('jquery');
+
+require('jquery.easing');
+
+require('js/typewriter');
+
+require('js/scrolling');
+
+require('js/preloader');
+
+require('js/progress-bar');
+
+require('js/animation');
+});
+
+require.register("js/animation.js", function(exports, require, module) {
+'use strict';
+
+(function () {
+
+    "use strict";
+
+    // ScrollReveal animations
+
+    sr.reveal('.anim-main-page', { distance: 0, duration: 1500, delay: 2000, scale: 0.9 });
+
+    sr.reveal('.anim-main-content-js', { distance: '50vh', duration: 1000, viewFactor: 0.5 });
+    sr.reveal('.anim-initial-content-js', { origin: 'top', distance: '10vw', duration: 700, scale: 0.9, viewFactor: 0.3 });
+
+    sr.reveal('.anim-link-icons-js', { distance: 0, duration: 1000, scale: 2 }, 500);
+
+    sr.reveal('.anim-card-top-js', { origin: 'top', distance: '15vw', duration: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-right-js', { origin: 'right', distance: '8vw', duration: 800, delay: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-left-js', { origin: 'left', distance: '15vw', duration: 800, viewFactor: 0.7 });
+    sr.reveal('.anim-card-bottom-js', { origin: 'bottom', distance: '15vw', duration: 800, delay: 800, viewFactor: 0.7 });
+
+    sr.reveal('.anim-article-right-js', { origin: 'right', distance: '6vw', duration: 800, delay: 500, viewFactor: 0.1 });
+    sr.reveal('.anim-article-left-js', { origin: 'left', distance: '15vw', duration: 800, delay: 500, viewFactor: 0.1 });
+
+    sr.reveal('.anim-progressbar-js', { origin: 'left', distance: '30vw', duration: 800, delay: 500, viewFactor: 0.9 });
+})(jQuery);
+});
+
+require.register("js/preloader.js", function(exports, require, module) {
+'use strict';
+
+var circleOne = anime({
+    targets: ['.circle-1'],
+    translateY: -22,
+    translateX: 44,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleTwo = anime({
+    targets: ['.circle-2'],
+    translateY: 22,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleThree = anime({
+    targets: ['.circle-3'],
+    translateY: -22,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+var circleFour = anime({
+    targets: ['.circle-4'],
+    translateY: 22,
+    translateX: -44,
+    direction: 'alternate',
+    loop: true,
+    elasticity: 400,
+    easing: 'easeInOutElastic',
+    duration: 500,
+    delay: 100
+});
+
+(function ($) {
+
+    "use strict";
+
+    // activates preloader
+
+    $(window).on('load', function () {
+
+        $('body').scrollspy('refresh');
+
+        // disable scrolling while preloader is active
+        disable_scroll();
+
+        setTimeout(function () {
+            //enable scrolling back
+            enable_scroll();
+            $('#preloader').fadeOut('fast', function () {});
+            $('#overlay').fadeOut('slow', function () {});
+        }, 2000);
+
+        function disable_scroll() {
+            document.body.style.overflow = "hidden";
+        }
+
+        function enable_scroll() {
+            document.body.style.overflow = "initial";
+        }
+    });
+})(jQuery);
+});
+
+require.register("js/progress-bar.js", function(exports, require, module) {
+'use strict';
+
+var ProgressBar = require('progressbar.js');
+
+(function () {
+
+    "use strict";
+
+    sr.reveal('.progressbar', { afterReveal: addDynamicProgressBar });
+
+    function getRandomColor() {
+        var colors = ['#ff7e09', '#ec5453', '#4054b2', '#f9bf3f', '#2fa499'];
+        var colorIndex = Math.floor(Math.random() * 5);
+        return colors[colorIndex];
+    }
+
+    function createBar(container, score) {
+        var bar = new ProgressBar.Line(container, {
+            strokeWidth: 4,
+            easing: 'easeInOut',
+            duration: 3000,
+            color: getRandomColor(),
+            trailColor: '#ffffff',
+            trailWidth: 4,
+            svgStyle: { width: '100%', height: '100%' },
+            text: {
+                style: {
+                    color: '#ffffff',
+                    position: 'absolute',
+                    right: '0',
+                    top: '-25px',
+                    padding: 0,
+                    margin: 0,
+                    transform: null
+                },
+                autoStyleContainer: false
+            },
+            from: { color: '#FFEA82' },
+            to: { color: '#ED6A5A' },
+            step: function step(state, bar) {
+                bar.setText(Math.round(bar.value() * 100) + ' %');
+            }
+        });
+
+        bar.animate(score);
+    }
+
+    var progressBarId = 1;
+
+    function addDynamicProgressBar(el) {
+        el.setAttribute('id', 'progressbar-' + progressBarId);
+        var score = el.getAttribute('data-score').valueOf();
+        createBar('#progressbar-' + progressBarId, score);
+        progressBarId++;
+    }
+})(jQuery);
+});
+
+require.register("js/scrolling.js", function(exports, require, module) {
+'use strict';
+
+(function ($) {
+    "use strict";
+
+    // Smooth scrolling using jQuery easing
+
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 56
+                }, 1000, "easeInOutExpo");
+                return false;
+            }
+        }
+    });
+
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('.js-scroll-trigger').click(function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Activate scrollspy to add active class to navbar items on scroll
+    $('body').scrollspy({
+        target: '#mainNav',
+        offset: 66
+    });
+
+    $(window).on('load', function () {
+        $('body').scrollspy('refresh');
+    });
+
+    // navbar reveal
+    $(document).ready(function () {
+
+        // hide .navbar first
+        $(".navbar").hide();
+
+        // fade in .navbar
+        $(function () {
+            $(window).scroll(function () {
+
+                // set distance user needs to scroll before we start fadeIn
+                if ($(this).scrollTop() > 10) {
+                    $('.navbar').fadeIn();
+                } else {
+                    $('.navbar').fadeOut();
+                }
+            });
+        });
+    });
+})(jQuery);
+});
+
+require.register("js/typewriter.js", function(exports, require, module) {
+"use strict";
+
+(function () {
+
+	"use strict";
+
+	sr.reveal('.anim-main-page', { afterReveal: runTypewriter });
+
+	function runTypewriter() {
+		var occupationID = "occupation";
+		var occupationText = ["Software Developer In Test?", "Test Automation Engineer?", "QA Specialist?"];
+		typewrite(occupationID, occupationText);
+	}
+
+	function typewrite(elemID, texts) {
+
+		var elemRef = document.getElementById(elemID);
+		var i = 0;
+		var interval = null;
+		var size = texts.length - 1;
+		var typeTimeout = 100;
+
+		function update(func) {
+			elemRef.classList.toggle('animateCursor');
+			setTimeout(function () {
+				elemRef.classList.toggle('animateCursor');
+				interval = setInterval(func, typeTimeout);
+			}, 1000);
+		}
+
+		function clear() {
+			var count = elemRef.innerHTML.length;
+			if (count === 0) {
+				// type interval between chars
+				typeTimeout = 100;
+				clearInterval(interval);
+				elemRef.innerHTML = '';
+				i = i >= size ? 0 : i + 1;
+				update(write);
+			} else {
+				elemRef.innerHTML = elemRef.innerHTML.toString().substr(0, count - 1);
+			}
+		}
+
+		function write() {
+			var count = elemRef.innerHTML.length;
+			var countCharacter = texts[i].length - 1;
+			elemRef.innerHTML += texts[i][count > 0 ? count : 0];
+
+			if (countCharacter === count) {
+				// clear interval between chars
+				typeTimeout = 40;
+				clearInterval(interval);
+
+				update(clear);
+			}
+		}
+
+		update(write);
+	}
+})(jQuery);
+});
+
+require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+  
+
+// Auto-loaded modules from config.npm.globals.
+window["$"] = require("jquery");
+window.jQuery = require("jquery");
+
+
+});})();require('___globals___');
+
+
+//# sourceMappingURL=app.js.map
